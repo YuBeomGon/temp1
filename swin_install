@@ -1,0 +1,28 @@
+swin transformer object detection 설치
+링크 참고
+https://velog.io/@khjgmdwns/SwinTransformerSwin-Object-Detection-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95CUDA-11.0
+cuda 11.1 install path 설정
+conda create --name swin python=3.8 -y
+conda activate
+git colon https://github.com/SwinTransformer/Swin-Transformer-Object-Detection.git
+pip install mmdet
+pip install torch==1.7.0+cu110 torchvision==0.8.1+cu110 -f https://download.pytorch.org/whl/cu110/torch_stable.html
+pip install mmcv-full -f https://download.openmmlab.com/mmcv/dist/cu110/torch1.7.0/index.html
+mmdet(swin-custom) / mmcv-custom 덮어쓰기
+이렇게 하면 swin 디렉토리 하위의 mmdet/mmcv_custom 등이 site-packages에 연결되서
+코드 수정사항이 mmdet 패키지에 반영된다.
+#swin clone 디렉토리안에서
+pip install -v -e .
+ERROR: Failed building wheel for mmpycocotools
+pip install pip==21.3.1
+다운그레이드 후 다시
+pip install -v -e .
+training 시 mmcv version error
+mmdet version check 부분 주석처리
+training시 pycocotools 관련 에러
+pip uninstall pycocotools
+pip install mmpycocotools
+mmpycocotools관련 에러 발생시
+uninstall 후 install 동작 확인
+pip install mmpose 후 (3rd party )
+후 pose top down video demo에서 video  pose 및 bbox 정상 동작 확인 (편집됨) 
